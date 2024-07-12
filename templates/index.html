@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+
+{% block main %}
+    <main>
+        <div class="we">
+            <h1>inovative platiform for micro business</h1>
+            <p>Sign up or log in to manage your business with us for free. Upgrade to premium for additional features and enhanced support.</p>
+            <a href="/register"><button type="button" class="btn btn-primary btn-lg">register</button></a>
+            <button type="button" class="btn btn-secondary btn-lg">login</button>
+        </div>
+        <div class="card text-bg-dark">
+            <img src="{{ url_for('static', filename='images/analytic.png') }}" class="card-img" alt="...">
+            <div class="card-img-overlay hello">
+              <h3 class="card-title">Why us?</h3>
+              <p class="card-text">Managing debits efficiently is crucial for any small enterprise. Without a streamlined system, it’s easy to lose track of payments, leading to potential financial confusion and missed opportunities.</p>
+              <p class="card-text">A Debit Monitor is designed to simplify this process. It helps you keep a precise record of all transactions, set limits on the number of debits a trader can offer, and sends timely reminders for overdue payments.</p>            
+            </div>
+            
+        </div>
+    </main>
+{% endblock %}
+
+{% block services %}
+    <div class="services">
+        <div class="row edit-row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card edit-card">
+                    <div class="card-body">
+                    <h5 class="card-title"><i class="uil uil-bag"></i> New stock</h5>
+                    <p class="card-text">
+                        You can add new stock items, track your sales and purchases, and view your business performance on your dashboard.
+                    </p>
+                    <a href="#" class="btn btn-primary">Go premium</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="uil uil-bell"></i> Debit Control</h5>
+                    <p class="card-text">Set your debit threshold to manage and limit the number of debits you can offer per day, helping you maintain better control over your finances.</p>                    
+                <a href="#" class="btn btn-primary">setting</a>
+                </div>
+            </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card edit-card">
+                    <div class="card-body">
+                    <h5 class="card-title"><i class="uil uil-analysis"></i> statistical analytics</h5>
+                    <p class="card-text">
+                         can add new stock items, track your sales and purchases, and view your business performance on your dashboard.
+                    </p>
+                    <a href="#" class="btn btn-primary">Go premium</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
