@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+<!-- display login messages -->
+{% block login_message %}
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <div class="message">
+                <ul>
+                {% for category, message in messages %}
+                    <small class="{{ category }}">* {{ message }}</small>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endwith %}
+{% endblock %}
+
+{% block main %}
+    <section class="main">
+        <form action="/login" method="POST">
+            <input type="email" name="email" id="" placeholder="your email"><br>
+            <input type="password" name="password" placeholder="type in password" id=""><br>
+            <button type="submit">login </button><br>
+            <a href="/login">forgot password</a><br>
+        </form>
+    </section>
+{% endblock %}

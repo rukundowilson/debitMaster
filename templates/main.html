@@ -28,16 +28,26 @@
             </div>
         </nav>
     </header>
-    {% block main %}
+    {% block main %}       
+                
+    {% endblock %}
+
+    <!-- flash register messages  -->
+    {% block flash_register_message %}
 
     {% endblock %}
 
+    <!-- flash succsess_login_messages -------->
+    {% block login_message %}
+
+    {% endblock %}
+        
     {% block services %}
 
     {% endblock %}
-    {% block register %}{% endblock %}
 
     {% block portfolio %}{% endblock %}
+    {% block login %}{% endblock %}
 
     <footer>
         <!-- <p>&copy; 2024 DebitMaster</p>

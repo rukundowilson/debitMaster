@@ -109,3 +109,16 @@ nav ul li a{
     justify-content: center;
     color: #fff;
 }
+.main{
+    display: grid;
+    justify-content: center;
+}
+.error{
+    text-align: center;
+    color: blue;
+}
+.reg-message,
+.message{
+    text-align: center;
+    color: red;
+}

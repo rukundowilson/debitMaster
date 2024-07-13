@@ -1,7 +1,6 @@
 {% extends 'main.html' %}
 
-hello
-{% block register %}
+{% block main %}
     <div class="register">
         <form action="/register" method="POST">
             <input type="text" placeholder="your name" name="username"><br>
@@ -9,15 +8,20 @@ hello
             <input type="password" name="password" id="" placeholder="password"><br>
             <input type="password" name="check-password" id="" placeholder="password"><br>
             <button type="submit" class="btn btn-primary btn-lg">register</button><br>
-            {% with messages = get_flashed_messages(with_categories=True) %}
-                {% if messages %}
-                    <ul>
-                    {% for category, message in messages %}
-                        <small style="color: red;" class="{{ category }}">* {{ message }}</small>
-                    {% endfor %}
-                    </ul>
-                {% endif %}
-                {% endwith %}
         </form>
     </div>
+{% endblock %}
+
+{% block flash_register_message %}
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <div class="reg-message">
+                <ul>
+                {% for category, message in messages %}
+                    <small class="{{ category }}">* {{ message }}</small>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endwith %}
 {% endblock %}

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect, flash,session
 import pymysql
 from urllib.parse import quote
 import re
@@ -26,9 +26,66 @@ def index():
     return render_template("index.html")
 
 # complete login logic
-@app.route('/login')
+@app.route('/login', methods=['POST', 'GET'])
 def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        
+        connection = get_db_connection()
+        cursor = connection.cursor()
+        
+        try:
+            # Check if the email exists
+            poke_email = "SELECT email FROM users WHERE email = %s"
+            cursor.execute(poke_email, (email,))
+            email_exist = cursor.fetchone()
+            
+            if not email_exist:
+                flash("Your email does not match any of our records. You can register with it.",'error')
+                return redirect('/login')
+            
+            # Retrieve the hashed password from the database
+            query = "SELECT hash FROM users WHERE email = %s"
+            cursor.execute(query, (email,))
+            result = cursor.fetchone()
+            hashedpwd = result[0]
+            
+            # Verify the provided password against the hashed password
+            if bcrypt.checkpw(password.encode('utf-8'), hashedpwd.encode('utf-8')):
+                flash("Welcome back!",'success')
+                # Set session or any other logic for a logged in user
+                check_session=" SELECT id FROM users WHERE email = %s "
+                cursor.execute(check_session,(email))
+                user_id=cursor.fetchone()[0]
+
+                if user_id:
+                    # set user login session
+                    session['user_id'] = user_id
+                    print(f"loged in as {session['user_id']}")
+
+                    user="SELECT username FROM users WHERE id = %s "
+                    cursor.execute(user,(session['user_id']))
+                    username=cursor.fetchone()[0]
+                    print(f' username: {username}')
+                    # print(session["user_id"])
+                return render_template('portfolio.html',username=username)
+            else:
+                flash("Invalid email or password",'error')
+        
+        except pymysql.MySQLError as e:
+            print(f"Error: {e}")
+            if connection:
+                connection.rollback()
+        
+        finally:
+            cursor.close()
+            connection.close()
+    
     return render_template('login.html')
+
+
+# allow users to register and manage session
 @app.route("/register", methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
