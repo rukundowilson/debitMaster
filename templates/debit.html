@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block dashboard %}
+  <section class="dibit-manager">
+    <h3>Offering debit</h3>
+    <form action="/debit" method="POST">
+      <input type="text" name="name-to" placeholder="Name of recipient"><br>
+      <input type="text" name="amount" placeholder="Amount offered"><br>
+      <input type="text" name="payback" placeholder="payback time expected"><br>
+      <button type="submit">confirm</button>
+    </form>
+    {% block dibitMessages %}
+      {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+              <div class="reg-message">
+                  <ul>
+                  {% for category, message in messages %}
+                      <small class="{{ category }}">* {{ message }}</small>
+                  {% endfor %}
+                  </ul>
+              </div>
+          {% endif %}
+      {% endwith %}
+    {% endblock %}
+  </section>
+{% endblock %}

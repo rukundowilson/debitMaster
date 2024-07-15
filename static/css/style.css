@@ -9,10 +9,8 @@ body{
     overflow-x: hidden;
 }
 header{
-    max-width: 1000px;
-    display: block;
-    margin: 0 auto;
     color: #fff;
+    padding: 5px 30px;
 }
 nav{
     display: flex;
@@ -27,7 +25,7 @@ nav ul li{
     margin: 0 10px;
 
 }
-nav ul li a{
+nav .navlinks ul li a{
     margin: 0 10px;
     text-decoration: none;
     font-size: 1.5em;
@@ -40,8 +38,9 @@ nav ul li a{
     text-align: center;
     color: #fff;
     display: block;
-    margin: 100px auto;
+    margin: 0 auto;
     max-width: 750px;
+    margin-bottom: 140px;
 }
 .we h1{
     font-size: 3.7rem;
@@ -55,9 +54,15 @@ nav ul li a{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(0deg, #080c1f50, #0d1a5317), #030b1f63;
     background-position: center;
     background-repeat: no-repeat;
+    background: none;
+}
+.card {
+    border: none;
+  }
+.card-img-overlay {
+    background: linear-gradient(0deg, #1c1f2d52, #0b259736), #04123600;
 }
 .hello h3{
     font-size: 2.5rem;
@@ -69,6 +74,9 @@ nav ul li a{
     text-align: center;
     color: #ffffffaf;
 
+}
+.card{
+    background-color: none;
 }
 .card img{
     max-height: 400px;
@@ -95,7 +103,6 @@ nav ul li a{
     background: linear-gradient(0deg, #1c1f2d, #1c1f2d), #f2f4f9;
     border: 1px solid #cccccc69;
     color: #fff;
-
 }
 .uil{
     font-size: 2rem;
@@ -115,10 +122,148 @@ nav ul li a{
 }
 .error{
     text-align: center;
-    color: blue;
+    color: red;
 }
 .reg-message,
 .message{
     text-align: center;
     color: red;
+}
+/* ------menu for profile customization----- */
+.user {
+    position: relative;
+}
+
+.user:hover {
+    color: #ccc;
+    cursor: pointer;
+}
+
+#profile-menu {
+    background: linear-gradient(0deg, #1c1f2d, #1c1f2d), #f2f4f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px 12px;
+    position: absolute;
+    top: 67px;
+    right: 30px; /* Align the menu to the right */
+    display: none; /* Hide the menu by default */
+    z-index: 1000; /* Ensure the menu is on top */
+}
+
+#profile-menu ul{
+    display: grid;
+    align-items: start;
+
+}
+#profile-menu ul a{
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+/* --------dashboard---- */
+.updates{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+.side-bar {
+    background-color: #00000015;
+    padding: 15px 10px;
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 85vh;
+}
+.side-bar a{
+    text-decoration: none;
+    color: #ffffff;
+    transition: 500ms ease-in-out;
+}
+.side-bar a:hover{
+    color: #ffffff96;
+}
+.basic-cards{
+    justify-self: start;
+}
+.side-bar small{
+    position: relative;
+    top: -5px;
+}
+.basic,
+.pay-mode{
+    background-color: #00000054;
+    margin: 10px;
+    min-height: 200px;
+    min-width: 300px;
+    padding: 10px;
+    text-align: start;
+    border-radius: 10px;
+}
+.uil-padlock{
+    margin: 15px 0;
+    font-size: 5rem;
+    color: rgba(255, 0, 0, 0.822);
+}
+.pay-mode ul{
+    list-style: none;
+}
+.pay-mode ul li{
+    border-top: 1px solid #ccc;
+    padding: 6px 0;
+}
+.pay-mode li a{
+    text-decoration: none;
+    color: #fff;
+    transition: 500ms ease-in-out;
+}
+.pay-mode li a:hover{
+    text-decoration: underline;
+    color: #ffffffa8;
+}
+.left-col{
+    margin: 5px 25px;
+}
+.delays{
+    background-color: #00000054;
+    padding: 20px;
+    border-radius: 9px;
+    min-height: 180px;
+    max-width: 300px;
+    margin: 20px 5px;
+}
+.col .uil-analysis{
+    background-color: rgba(255, 68, 0, 0.842);
+    padding: 5px;
+    border-radius: 50px;
+}
+
+.search form >* {
+    display: block;
+    margin: 10px auto;
+    align-self: center;
+}
+.search input{
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+}
+.delays ul li{
+    margin: 6px 0;
+}
+.deleft-col:hover{
+    background-color: #ccc;
+    box-shadow: linear-gradient(0deg, #111b49, #182350), #0a266d10;
+}
+
+/* ----- debit ------ */
+.debit{
+    text-align: center;
+}
+
+.dibit-manager{
+    display: block;
+    margin: 0 auto;
 }

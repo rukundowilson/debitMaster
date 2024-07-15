@@ -1,4 +1,38 @@
-{% extends 'main.html' %}
-{% block portfolio %}
-    <h2>this is portifolio page {{username}} </h2>
+{% extends 'layout.html' %}
+{% block dashboard %}
+  <h3>All records</h3>
+  <div class="row pay-mode">
+    <div class="col data">
+      <ul>
+        <h6>trans time</h6>
+        {% for activity in show_logs %}
+          <li>{{activity[2]}} </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col data">
+      <ul>
+        <h6>name</h6>
+        {% for activity in show_logs %}
+          <li><a href="#">{{activity[1]}} </a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col data">
+      <ul>
+        <h6>payMode</h6>
+        {% for activity in show_logs %}
+          <li>{{paymode}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col data">
+      <ul>
+        <h6>amount</h6>
+        {% for activity in show_logs %}
+        <li>${{activity[0]}} </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 {% endblock %}
