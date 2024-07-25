@@ -2,72 +2,82 @@
 {% block main %}
   <section class="updates">
     <div class="side-bar">
-      <div>
-        <a href="/dashboard"><i class="uil uil-layer-group"></i> dashboard</a><br>
-        <a href="/debit"><i class="uil uil-notes"></i><small> offer Debit</small></a><br>
-        <a href=""><i class="uil uil-box"></i><small> RecordPayback</small></a><br>
-        <a href=""><i class="uil uil-bell"></i><small> notifications</small></a><br>
-        <a href=""><i class="uil uil-file-export"></i><small> export file</small></a><br>
-        <a href="#" ><i class="uil uil-robot"></i><small> skim AI</small></a><br>
-
+      <a style="background-color: #0d6efd; text-align:left; padding: 0 10px; display: block; margin: 0 0 10px 0;" href="/dashboard"><i class="uil uil-layer-group"></i> dashboard</a>
+      <ul style="list-style: none;">
+        <li><a href="/debit"><i class="uil uil-notes"></i><small> offer Debit</small></a><br></li>
+        <li><a href="/payback"><i class="uil uil-box"></i><small> Payback</small></a></li>
+        <li><a href="/history" ><i class="uil uil-history"></i><small> history</small></a></li>
+        <li><a href="#"><i class="uil uil-file-export"></i><small> export file</small></a></li>
+        <li><a href="#" ><i class="uil uil-robot"></i><small> skim AI</small></a><br></li>
+        <li><a href="#"><i class="uil uil-notes"></i><small> FAQ</small></a><br></li>
+        <li><a href="" class="btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"><i class="uil uil-bell"></i><small> notifications <span>1</span> </small></a></li>
+        <div style="min-height: 120px;">
+          <div class="collapse collapse-vertical" style="position: absolute;" id="collapseWidthExample">
+            <div class="card card-body" style="max-width: 250px;  background: #0d6dfdd7; z-index: 10;">
+              <ol>
+                <li>you have reached maxmum debit</li>
+                <li>from shopMs <br> <small>we recommend you to add phone number while giving debits</small> </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </ul>
+      <div style="position: absolute; bottom: 0;">
+        <a href="/logout"><i class="uil uil-signout"></i> logout</a>
       </div>
     </div>
     <div class="basic-cards">
       <div class="search">
         <form action="/search">
-          <input type="text" name="search" placeholder="search" autocomplete="off" id="search">
-          <button type="button" class="btn btn-primary btn-lg">search</button>
+          <h1 style="text-align: center;">{{username}} with shopMS</h1><br>
+          
         </form>
       </div>
-        <div class="container text-center">
-            <div class="row">
-              <div class="col basic">
-                <i class="uil uil-analysis"></i><br>
-                <div><h6>total debits</h6></div>
-                <h3>{{total_debit}}</h3><br>
-                <h5 style="color: #ffffff8f;">your daily limit for debit is </h5>
-              </div>
-              <div class="col basic">
-                <div style="text-align: center; padding: 10px 12px;">
-                  <i class="uil uil-padlock"></i><br>
-                  <h5 style="color: red;">This is a premium feature</h5>
-
-                </div>
-              </div>
-              <div class="col basic">
-                total sales
-              </div>
+      <div class="container text-center">
+          <div class="row">
+            <div class="col basic">
+              <i class="uil uil-analysis"></i><br>
+              <div style="font-family: Spectral, serif;color: #ffffffa2;text-transform: capitalize; margin-top: 8px;"><h5>Total for all debits</h5></div>
+              <h3 style="margin: 7px 0;">{{total_debit}}</h3><br>
+              <small style="color: #ffffffc7;text-transform: capitalize; ">you set  daily limit for debit <br> <span>None</span></small>
             </div>
+            <div class="col basic">
+              <div><i class="uil uil-bill"></i></div>
+                <div style="color: #ffffffa2;text-transform: capitalize;margin-top: 9px; "><h5>Total paybacks today</h5>
+                </div>
+                <h3 style="margin: 7px 0;">{{total_paybacks}}</h3><br>
+                <small style="color: #ffffffc7;text-transform: capitalize; ">remaining expected paybacks to day <br> <span>{{found_expected_paybacks}}</span> </small>
+              </div>
+            <div class="col basic">
+              <div><i class="uil uil-money-bill-slash" style="background-color: red; padding: 5px 10px;border-radius: 50%;"></i></div>
+              <div style="color: #ffffffa2;text-transform: capitalize;margin-top: 9px; "><h5>Total overdue paybacks</h5></div>
+              <h3 style="margin: 7px 0;">{{found_delays}}</h3><br>
+              <small style="color: #ffffffc7;text-transform: capitalize; ">by <span>{{number_overdue}}</span> recipients </small>
+            </div>
+          </div>  
+      </div>
+      {% block dashboard %}
 
-            {% block dashboard %}
-      
-            {% endblock %}
-        </div>
+      {% endblock %} 
     </div>
-    <div class="left-col">
-      <h4>Recent updates</h4>
-      <div class="delays">
-        <ul>
-          <li>Nadia has overdue payment</li>
-          <li>Nancy has overdue payment</li>
-          <li>....</li>
-        </ul>
+    <div class="right-sidebar">
+      <div class="notifications">
+        <h5>All overdue paybacks </h5>
+        <ol>
+          {% for key,value in has_overdue.items() %}
+            <li>{{key}} {{value}}</li>
+          {% endfor %}
+        </ol>
       </div>
-      <div class="delays">
-        <ul>
-          <li>Nadia's payback debit delayed</li>
-          <li>Nancy is suppposed to payback</li>
-          <li>....</li>
-        </ul>
+      <div class="current-paybacks">
+        <h5>current paybacks</h5>
+        <ol>
+          {% for key,value in result_payback.items() %}
+            <li>{{key}} {{value}}</li>
+          {% endfor %}
+          <a href="/history">view in history</a>
+        </ol>
       </div>
-      <h4>analytics</h4>
-      <div class="delays">
-        <ul>
-          <li>Nadia's payback debit delayed</li>
-          <li>Nancy is suppposed to payback</li>
-          <li>....</li>
-        </ul>
-      </div>
-  </div>
-  </section>
+    </div>
+   </section>
 {% endblock %}

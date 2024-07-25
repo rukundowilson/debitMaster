@@ -2,17 +2,7 @@
 
 <!-- display login messages -->
 {% block login_message %}
-    {% with messages = get_flashed_messages(with_categories=True) %}
-        {% if messages %}
-            <div class="message">
-                <ul>
-                {% for category, message in messages %}
-                    <small class="{{ category }}">* {{ message }}</small>
-                {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
-    {% endwith %}
+    
 {% endblock %}
 
 {% block main %}
@@ -23,5 +13,16 @@
             <button type="submit">login </button><br>
             <a href="/login">forgot password</a><br>
         </form>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <div class="message">
+                <ul>
+                {% for category, message in messages %}
+                    <small class="{{ category }}">* {{ message }}</small>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endwith %}
     </section>
 {% endblock %}

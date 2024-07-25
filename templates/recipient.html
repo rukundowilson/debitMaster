@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="card" style="background: #00000031; color: #fff;">
+    <div class="card-header" style="text-align: center;">
+      customer profile
+    </div>
+    <div class="card-body" >
+      <h5 class="card-title">you are viewing {{recipient[0]}}'s profile</h5>
+      <div class="profile-data">
+        <ul>
+            <li>customer name : {{recipient[0]}}</li>
+            <li>phone number or email : {{recipient[1]}}</li>
+            <li>customer ows you : ${{recipient[2]}}</li>
+            <li>timestamp : {{recipient[3]}}</li>
+            <li>payback expected at: {{recipient[4]}}</li>
+        </ul>
+      </div>
+      <a href="/dashboard" class="btn btn-primary">return</a>
+    </div>
+    <div class="card-footer">
+      <a href="/debit">New debit</a> or <a href="/payback">record payback</a>
+    </div>      
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block dashboard %}
+    <h3>record payback</h3><br>
+    <section class="">
+        <form action="/payback" method="POST">
+            <div class="form-floating mb-3">
+                <input type="text" name="recipient" style="background: none; color: #ffffff;" class="form-control" id="floatingInput" placeholder="payback by">
+                <label for="floatingInput">payback by</label>
+            </div>
+              <div class="form-floating">
+                <input type="text" name="amount" style="background: none; color: #ffffffda;" class="form-control" id="floatingPassword" placeholder="payback amount">
+                <label for="floatingPassword">payback amount</label>
+            </div><br>
+              <button type="submit" class="btn btn-primary btn-lg"> confirm payback</button>
+        </form> <br><br>
+        <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
+            <small style="color: red;"><i class="uil uil-exclamation-triangle"></i> you are recording a payback just because some one is paying you back and it's essential</small>
+          </div>
+        
+    
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                <div class="reg-message">
+                    <ul>
+                    {% for category, message in messages %}
+                        <small class="{{ category }}">* {{ message }}</small>
+                    {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+    
+    </section>
+    <!-- <div class="debit-manager" >
+        
+        <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3" style="margin: 20px 0;">
+            <small style="color: red;">
+                <i class="uil uil-shield-exclamation"></i> You are recording a payback because someone who owes you money is making a payment. If you do not record this, you may lose track of your financial data. For support, visit <a href="https://support.shopMs.com">support.shopMs.com</a>.
+            </small>
+        </div>      
+    </div> -->
+
+{% endblock %}

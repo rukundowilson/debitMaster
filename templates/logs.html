@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="card" style="background: #00000031; color: #fff;">
+    <div class="card-header" style="text-align: center;display: flex; justify-content: space-around; align-items: center;">
+      <a style="color: #fff; text-decoration: none;" href="/dashboard"><i class="uil uil-accessible-icon-alt"></i></a>History for every transaction that you have ever made
+      <form action="">
+        <select class="form-select" id="autoSizingSelect">
+          <option selected disabled>take action...</option>
+          <option value="1">clear</option>
+          <option value="2">filter decending</option>
+          <option value="3">filter ascending</option>
+        </select>
+      </form>
+    </div>
+    <div class="card-body" >
+       
+        <div class="row" style="margin: 20px 10px; text-wrap: nowrap; text-align: center;">
+          <h6 style="text-align: center;">paybacks section</h6><br> <br>
+          <div class="col">
+            <ul>
+              <h6>TIMESTAMP</h6>
+              {% for payback in payback_logs %}
+                <li>{{payback[5]}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="col data">
+            <ul>
+              <h6>PAYBACK BY</h6>
+              {% for payback in payback_logs %}
+                <li style="color: orangered;text-transform: capitalize;">
+                    {{payback[2]}}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="col data">
+            <ul>
+              <h6>PAYBACK AMOUNT</h6>
+              {% for payback in payback_logs %}
+                <li>{{payback[3]}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="row" style="margin: 20px 10px; text-wrap: nowrap; text-align: center;">
+          <h6 style="text-align: center;">debit section</h6><br> <br>
+          <div class="col data">
+            <ul>
+              <h6>TIMESTAMP</h6>
+              {% for debit in debit_logs %}
+              <li>
+                  {{debit[6]}}
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+          <div class="col data">
+            <ul>
+              <h6>RECIPIENT</h6>
+              {% for debit in debit_logs %}
+                      <li>
+                          <a style="color: orangered; font-size: 1.2rem; text-transform: capitalize;" href="{{ url_for('recipient_profile', recipient_id=debit[0]) }}" class="recipient-info" data-recipient-id="{{ debit[0] }}">
+                              {{debit[2]}}
+                          </a>
+                      </li>
+                {% endfor %}
+      
+            </ul>
+          </div>
+          <div class="col">
+            <ul>
+              <h6>DEBIT AMOUNT</h6>
+              {% for debit in debit_logs %}
+              <li>
+                  {{debit[3]}}
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+          
+        </div>
+    </div>
+    <div class="card-footer">
+      end of History <a href="/dashboard">dashboard</a>
+    </div>      
+{% endblock %}

@@ -1,15 +1,28 @@
 {% extends 'layout.html' %}
 
 {% block dashboard %}
+  <h3 style="margin-top: 10px;">offer new debit</h3>
   <section class="dibit-manager">
-    <h3>Offering debit</h3>
     <form action="/debit" method="POST">
-      <input type="text" name="name-to" placeholder="Name of recipient"><br>
-      <input type="text" name="amount" placeholder="Amount offered"><br>
-      <input type="text" name="payback" placeholder="payback time expected"><br>
-      <button type="submit">confirm</button>
+      <div class="form-floating mb-3">
+        <input type="text" name="name-to" style="background: none; color: #fff;" autocomplete="off" class="form-control" id="floatingInput" placeholder="">
+        <label for="floatingInput">enter the name of recipient</label>
+        <small style="color: red;"><i class="uil uil-shield-exclamation"></i>using the name that already has debit for you will update anexisisting one</small><br>
+
+      </div>
+      <div class="form-floating">
+        <input type="text" name="amount" style="background: none; color: #fff;" class="form-control" id="floatingPassword" placeholder="amount offered">
+        <label for="floatingPassword">debit amount</label>
+      </div>
+      <div class="recommended">
+        <input class="form-control" name="phone" style="color: #fff;background: none;" type="text" placeholder="recipient phone or email" aria-label="default input example">
+        <small style="color: #ffffffb0;"><i class="uil uil-shield-exclamation"></i>optional but recommended</small><br>
+        <input class="form-control"  name="payback" type="text" style="color: #fff;background: none;" placeholder="payback time expected(YYYY-MM-DD)" aria-label="default input example">
+        <small style="color: #ffffffb0;"><i class="uil uil-shield-exclamation"></i>optional but recommended</small><br>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg">confirm debit</button> <br>
     </form>
-    {% block dibitMessages %}
+    {% block debitMessages %}
       {% with messages = get_flashed_messages(with_categories=True) %}
           {% if messages %}
               <div class="reg-message">

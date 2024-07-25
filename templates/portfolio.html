@@ -1,10 +1,10 @@
 {% extends 'layout.html' %}
 {% block dashboard %}
-  <h3>All records</h3>
-  <div class="row pay-mode">
+  <h3 style="text-align: center;">Recent  transactions</h3>
+  <div class="row pay-mode" style="margin: 20px 10px;">
     <div class="col data">
       <ul>
-        <h6>trans time</h6>
+        <h6>transaction time</h6>
         {% for activity in show_logs %}
           <li>{{activity[2]}} </li>
         {% endfor %}
@@ -13,9 +13,14 @@
     <div class="col data">
       <ul>
         <h6>name</h6>
-        {% for activity in show_logs %}
-          <li><a href="#">{{activity[1]}} </a></li>
-        {% endfor %}
+        {% for recipient in recipients %}
+                <li>
+                    <a href="{{ url_for('recipient_profile', recipient_id=recipient[0]) }}" class="recipient-info" data-recipient-id="{{ recipient[0] }}">
+                        {{recipient[1]}}
+                    </a>
+                </li>
+          {% endfor %}
+
       </ul>
     </div>
     <div class="col data">
@@ -29,8 +34,8 @@
     <div class="col data">
       <ul>
         <h6>amount</h6>
-        {% for activity in show_logs %}
-        <li>${{activity[0]}} </li>
+        {% for recipient in recipients %}
+          <li>${{recipient[2]}} </li>
         {% endfor %}
       </ul>
     </div>

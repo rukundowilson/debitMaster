@@ -2,6 +2,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: Spectral, serif;
+    font-size: 16px;
 }
 body{
     background: linear-gradient(0deg, #1c1f2d, #1c1f2d), #f2f4f9;
@@ -13,26 +15,13 @@ header{
     padding: 5px 30px;
 }
 nav{
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 25px;
+    background: linear-gradient(0deg, #1c1f2d, #1c1f2d), #f2f4f9;
 }
-nav ul{
-    display: flex;
-    list-style: none;
-}
-nav ul li{
-    margin: 0 10px;
-
-}
-nav .navlinks ul li a{
-    margin: 0 10px;
-    text-decoration: none;
-    font-size: 1.5em;
+.navbar a{
     color: #fff;
 }
-.logo{
-    font-size: 2em;
+.navbar a:hover{
+    color: #ffffffc0;
 }
 .we{
     text-align: center;
@@ -83,11 +72,6 @@ nav .navlinks ul li a{
 }
 .row{
     padding: 20px 10px;
-    justify-content: space-between;
-    max-width: 1000px;
-    display: block;
-    margin: 0 auto;
-
 }
 .row .card{
     margin: 20px 25px;
@@ -105,7 +89,7 @@ nav .navlinks ul li a{
     color: #fff;
 }
 .uil{
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 .register{
     display: block;
@@ -115,6 +99,9 @@ nav .navlinks ul li a{
     align-items: center;
     justify-content: center;
     color: #fff;
+}
+.parent-layout{
+    padding-top: 100px;
 }
 .main{
     display: grid;
@@ -172,10 +159,9 @@ nav .navlinks ul li a{
     padding: 15px 10px;
     list-style: none;
     text-decoration: none;
-    display: flex;
-    flex-direction: column;
     gap: 10px;
     max-height: 85vh;
+    min-width: 200px;
 }
 .side-bar a{
     text-decoration: none;
@@ -185,14 +171,29 @@ nav .navlinks ul li a{
 .side-bar a:hover{
     color: #ffffff96;
 }
-.basic-cards{
-    justify-self: start;
-}
 .side-bar small{
     position: relative;
     top: -5px;
 }
-.basic,
+/* =--------notifications--- */
+.side-bar span{
+    background-color: red;
+    padding: 4px 8px;
+    border-radius: 50%;
+}
+.basic-cards{
+    display: block;
+}
+.basic{
+    background-color: #00000027;
+    margin: 10px;
+    min-height: 200px;
+    max-width: 600px;
+    min-width: 300px;
+    padding: 15px 25px;
+    text-align: start;
+    border-radius: 10px;
+}
 .pay-mode{
     background-color: #00000054;
     margin: 10px;
@@ -201,11 +202,6 @@ nav .navlinks ul li a{
     padding: 10px;
     text-align: start;
     border-radius: 10px;
-}
-.uil-padlock{
-    margin: 15px 0;
-    font-size: 5rem;
-    color: rgba(255, 0, 0, 0.822);
 }
 .pay-mode ul{
     list-style: none;
@@ -223,23 +219,67 @@ nav .navlinks ul li a{
     text-decoration: underline;
     color: #ffffffa8;
 }
-.left-col{
-    margin: 5px 25px;
+.right-sidebar{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 10px;
+    margin: 60px 25px;
+    max-height: 80vh;
 }
-.delays{
-    background-color: #00000054;
+.notifications {
+    background: #0000003a;
     padding: 20px;
-    border-radius: 9px;
-    min-height: 180px;
-    max-width: 300px;
-    margin: 20px 5px;
-}
-.col .uil-analysis{
-    background-color: rgba(255, 68, 0, 0.842);
-    padding: 5px;
-    border-radius: 50px;
+    min-width: 200px;
+    max-height: 300px;
+    overflow-y: hidden; /* Hide scrollbar initially */
+    transition: overflow 0.3s ease; /* Smooth transition */
 }
 
+.notifications:hover {
+    overflow-y: scroll; /* Show scrollbar on hover */
+    box-sizing: border-box;
+}
+
+/* Custom scrollbar styles */
+.notifications::-webkit-scrollbar {
+    width: 0px; /* Make scrollbar thin */
+}
+
+.notifications::-webkit-scrollbar-track {
+    background: transparent; /* Track background */
+    border-radius: 10px; /* Optional: round the track */
+}
+
+.notifications::-webkit-scrollbar-thumb {
+    background-color: #888; /* Thumb color */
+    border-radius: 10px; /* Rounded corners for thumb */
+    border: 2px solid transparent; /* Optional: space around the thumb */
+    background-clip: content-box; /* Ensure the border shows */
+}
+
+.notifications::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker color on hover */
+}
+
+
+.current-paybacks{
+    background: #0000003a;
+    padding: 20px;
+    min-width: 200px;
+    max-height: 300px;
+
+}
+
+.col .uil-analysis{
+    background-color: rgba(255, 68, 0, 0.842);
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+.uil-bill{
+    background-color: #0d6efd;
+    border-radius: 50%;
+    padding: 5px 10px;
+}
 .search form >* {
     display: block;
     margin: 10px auto;
@@ -250,20 +290,86 @@ nav .navlinks ul li a{
     border: none;
     border-radius: 8px;
 }
-.delays ul li{
-    margin: 6px 0;
-}
 .deleft-col:hover{
     background-color: #ccc;
     box-shadow: linear-gradient(0deg, #111b49, #182350), #0a266d10;
 }
 
 /* ----- debit ------ */
-.debit{
+.dibit-manager{
     text-align: center;
+    display: block;
+    margin: 10px auto;
 }
 
-.dibit-manager{
+.uil-shield-exclamation{
+    font-size: 17px;
+}
+/* ------------design user profiling page------ */
+.container ul{
+    list-style: none;
+
+}
+.card-body ul li{
+    line-height: 30px;
+    color: orangered;
+}
+.card-body{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.card-title{
     display: block;
     margin: 0 auto;
+}
+.card-footer{
+    text-align: center;
+}
+.card-footer a{
+    color: #ffffffc0;
+    transition: 500ms ease-in-out;
+}
+.card-footer a:hover{
+    color: #ffffff86;
+}
+/* ------payback--------- */
+
+.payback .btn{
+    margin: 10px;
+}
+.form-control{
+    background: #18171731;
+}
+.recommended{
+    margin: 20px 0;
+}
+.recommended input{
+    margin-top: 15px;
+    background-color: none;
+}
+.recommended input::placeholder {
+    color: rgba(255, 255, 255, 0.664) !important;
+}
+.commitment{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 60vh;
+}
+.commitment img{
+    max-width: 300px;
+}
+.uil-arrow-left{
+    font-size: 22px;
+}
+
+.commitment a{
+    text-decoration: none;
+}
+/* -----------layout spans --------- */
+.row span{
+    color: red;
+    font-size: 20px;
 }

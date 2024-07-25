@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block main %}
+  <div class="commitment">
+    <img src="{{ url_for('static', filename='images/folder.png') }}" alt="Image">
+    <h2> 
+         {{message}} <br>
+         <a href="/dashboard"><button style="margin: 10px auto; display: block;" type="button" class="btn btn-primary btn-lg"><i class="uil uil-arrow-left"></i> return back</button></a>
+    </h2>
+
+  </div>
+{% endblock %}
