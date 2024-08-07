@@ -9,7 +9,7 @@
     </div>
     <div class="card-body" >
       <h5 class="card-title">you are viewing {{recipient[0]}}'s profile</h5>
-      <div class="profile-data">
+      <div class="profile-data" style="color: orangered;">
         <ul>
             <li>customer name : {{recipient[0]}}</li>
             <li>phone number or email : {{recipient[1]}}</li>
@@ -18,7 +18,7 @@
             <li>payback expected at: {{recipient[4]}}</li>
         </ul>
       </div>
-      <a href="/dashboard" class="btn btn-primary">return</a>
+      <a href="/all_debits" class="btn btn-primary" >view all debits</a>
     </div>
     <div class="card-footer">
       <a href="/debit">New debit</a> or <a href="/payback">record payback</a>

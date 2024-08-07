@@ -2,17 +2,15 @@
 
 {% block main %}
     <div class="register">
-        <form action="/login" method="POST">
-            <div class="signup" style="padding: 30px; border-radius: 7px;" > 
+        <form action="/verify" method="POST">
+            <div class="signup" style="padding: 30px; border-radius: 7px;" >
                 <div class="card-header">
                     <h4>wellcome back to shopMS community</h4> <br>
                 </div>
                 <hr>
-                <h3>login / <a href="/register">register</a></h3><br>
-                <h5 style="color: #ffffffb2;"><i class="uil uil-user-circle"></i> {{user_email}}</h5>
-                <input class="form-control"  name="password" type="password" style="color: #fff;background: none;" placeholder="Password Key" aria-label="default input example"> <br>
-                <button type="submit" class="btn btn-primary btn-lg">login</button><br> <br>
-                <a href="/reset_passworld">forgot password</a> <br> <br>
+                <h3>check me in / <a href="/register">register</a></h3><br> 
+                <input class="form-control"  name="email" type="text" style="color: #fff;background: none;" placeholder="shop Email" aria-label="default input example"> <br>
+                <button type="submit" class="btn btn-primary btn-lg">continue</button><br>
                 {% with messages = get_flashed_messages(with_categories=True) %}
                     {% if messages %}
                         <div class="reg-message">
@@ -23,9 +21,9 @@
                             </ul>
                         </div>
                     {% endif %}
-                {% endwith %}
+                {% endwith %} 
+                <br><br>
                 <a href="#"><small>terms of use </small></a> | <a href="#"><small>privacy policy</small></a>
-
             </div>
         </form>
     </div>

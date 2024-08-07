@@ -10,12 +10,12 @@
         {% endfor %}
       </ul>
     </div>
-    <div class="col data">
+    <div class="col data col-add">
       <ul>
         <h6>name</h6>
         {% for recipient in recipients %}
                 <li>
-                    <a href="{{ url_for('recipient_profile', recipient_id=recipient[0]) }}" class="recipient-info" data-recipient-id="{{ recipient[0] }}">
+                    <a href="{{ url_for('recipient_profile', recipient_id=recipient[0]) }}" title="click to view {{recipient[1]}}'s profile" class="recipient-info" data-recipient-id="{{ recipient[0] }}">
                         {{recipient[1]}}
                     </a>
                 </li>
@@ -38,6 +38,9 @@
           <li>${{recipient[2]}} </li>
         {% endfor %}
       </ul>
+    </div>
+    <div class="d-grid gap-2">
+      <a style="color: orangered;" href="/all_debits">view whole debit list</a>
     </div>
   </div>
 {% endblock %}

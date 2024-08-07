@@ -1,0 +1,104 @@
+{% extends 'main.html' %}
+
+{% block main %}
+    <form action="/settings" method="POST">
+        <div class="container">
+            <div class="row gutters">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="account-settings">
+                                <div class="user-profile">
+                                    <div class="user-avatar">
+                                        <i class="uil uil-user-square" style="font-size: 4rem;"></i>
+                                    </div>
+                                    <h5 class="user-name" style="color: #ffffffc9;">{{user}}</h5>
+                                    <h6 class="user-email">{{email}}</h6>
+                                </div>
+                                <div class="about">
+                                    <h5 class="mb-2 text-primary">about</h5>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlTextarea1" class="form-label"> update about shop</label>
+                                        <textarea name="bio" class="form-control" placeholder="{{existing_data[0]}}" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h6 class="mb-3 text-primary" style="color: orangered !important;">account Details</h6>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="fullName">update user name</label>
+                                        <input type="text" name="shop_name" class="form-control" id="fullName" placeholder="{{username}}">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="eMail">update Email</label>
+                                        <input type="email" name="shop_mail" class="form-control" id="eMail" placeholder="{{email}}">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="text" class="form-control" disabled id="phone" placeholder="Enter phone number">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="website">Website URL</label>
+                                        <input type="url" class="form-control" disabled id="website" placeholder="Website url">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h6 class="mb-3 text-primary" style="color: orangered !important;">shopMS settings</h6>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="Street">daily maximum debit</label>
+                                        <input type="text" name ="dmd" class="form-control" id="Street" placeholder="{{existing_data[1]}}">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="ciTy">Client Debit Limit</label>
+                                    <input type="text" name="cdl" class="form-control" id="ciTy" placeholder="{{existing_data[2]}}">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="sTate">Maximum payback delay</label>
+                                        <input name="mpd" type="text" class="form-control" id="sTate" placeholder=" YYYY-MM-DD">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="zIp"> Loyalty criteria</label>
+                                    <input name = 'lc' type="text" class="form-control" id="zIp" placeholder=" {{existing_data[4]}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="text-right">
+                                        <button type="reset" id="button" name="submit" class="btn btn-secondary">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>      
+    </form>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{%block main %}
+  <h3 style="text-align: center;">Recent  transactions</h3>
+  <div style="margin: 20px auto; max-width: 60%; display: block;">
+    <div class="row pay-mode">
+      <div class="col data col-add">
+        <ul>
+          <h6>name</h6>
+          {% for recipient in recipients %}
+              <li>
+                  <a href="{{ url_for('recipient_profile', recipient_id=recipient[0]) }}" class="recipient-info" data-recipient-id="{{ recipient[0] }}" title="click to view {{recipient[1]}}'s profile">
+                      {{recipient[1]}}
+                  </a>
+              </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col data">
+          <ul>
+            <h6>payMode</h6>
+            {% for activity in show_logs %}
+              <li>{{paymode}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col data">
+          <ul>
+            <h6>amount</h6>
+            {% for recipient in recipients %}
+              <li>${{recipient[2]}} </li>
+            {% endfor %}
+          </ul>
+        </div>
+    </div>
+  </div>
+  {% endblock %}

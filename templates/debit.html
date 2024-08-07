@@ -4,36 +4,43 @@
   <h3 style="margin-top: 10px;">offer new debit</h3>
   <section class="dibit-manager">
     <form action="/debit" method="POST">
-      <div class="form-floating mb-3">
-        <input type="text" name="name-to" style="background: none; color: #fff;" autocomplete="off" class="form-control" id="floatingInput" placeholder="">
-        <label for="floatingInput">enter the name of recipient</label>
-        <small style="color: red;"><i class="uil uil-shield-exclamation"></i>using the name that already has debit for you will update anexisisting one</small><br>
-
+      <div class="main-wrapper">
+        <div class="input-containers" style="flex-grow: 1;">
+          <div class="form-floating mb-3">
+            <input type="text" name="name-to" style="background: none; color: #fff;" autocomplete="off" class="form-control" id="floatingInput" placeholder="">
+            <label for="floatingInput">enter the name of recipient</label>
+          </div>
+          <div class="form-floating">
+            <input type="text" name="amount" style="background: none; color: #fff;" class="form-control" id="floatingPassword" placeholder="amount offered">
+            <label for="floatingPassword">debit amount</label>
+          </div>
+          <div class="recommended">
+            <input class="form-control" name="phone" style="color: #fff;background: none;" type="text" placeholder="recipient phone or email" aria-label="default input example">
+            <input class="form-control"  name="payback" type="text" style="color: #fff;background: none;" placeholder="payback time expected(YYYY-MM-DD)" aria-label="default input example">
+          </div>
+        </div>
+        <div class="mb-3" style="flex-grow: 1;">
+          <label for="exampleFormControlTextarea1" class="form-label" style="color: orangered; text-transform: capitalize;" ><i class="uil uil-exclamation-triangle" style="font-size: 1.4rem;"></i> optional but recommended</label>
+          <textarea name="debit-details" class="form-control" placeholder="describe debit including purchase items" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
       </div>
-      <div class="form-floating">
-        <input type="text" name="amount" style="background: none; color: #fff;" class="form-control" id="floatingPassword" placeholder="amount offered">
-        <label for="floatingPassword">debit amount</label>
-      </div>
-      <div class="recommended">
-        <input class="form-control" name="phone" style="color: #fff;background: none;" type="text" placeholder="recipient phone or email" aria-label="default input example">
-        <small style="color: #ffffffb0;"><i class="uil uil-shield-exclamation"></i>optional but recommended</small><br>
-        <input class="form-control"  name="payback" type="text" style="color: #fff;background: none;" placeholder="payback time expected(YYYY-MM-DD)" aria-label="default input example">
-        <small style="color: #ffffffb0;"><i class="uil uil-shield-exclamation"></i>optional but recommended</small><br>
-      </div>
-      <button type="submit" class="btn btn-primary btn-lg">confirm debit</button> <br>
-    </form>
-    {% block debitMessages %}
-      {% with messages = get_flashed_messages(with_categories=True) %}
-          {% if messages %}
-              <div class="reg-message">
-                  <ul>
-                  {% for category, message in messages %}
-                      <small class="{{ category }}">* {{ message }}</small>
-                  {% endfor %}
-                  </ul>
-              </div>
-          {% endif %}
-      {% endwith %}
+      {% block debitMessages %}
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                <div class="reg-message">
+                    <ul>
+                    {% for category, message in messages %}
+                        <small class="{{ category }}">* {{ message }}</small>
+                    {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
     {% endblock %}
+      <button type="submit" class="btn btn-primary btn-lg">confirm debit</button> <br>
+    </form><br>
+    <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
+      <small style="color: orangered; text-align: center;"><i class="uil uil-exclamation-triangle"></i> a recipient must have a unique phone number or email do not try to offer debit for different recipients with same phone or email</small>
+  </div>
   </section>
 {% endblock %}

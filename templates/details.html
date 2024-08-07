@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block main %}
+    <div class="container">
+        <div class="card" style="background: #00000031; color: #fff;">
+    <div class="card-header" style="text-align: center;">
+     transaction details
+    </div>
+    <div class="card-body" >
+      <div class="profile-data" style="color: orangered; text-align: center;">
+        <ul>
+            <li>timestamp: {{loged_profile[0]}}</li>
+            <li>recipient name: {{loged_profile[1]}}</li>
+            <li>debitted: {{loged_profile[2]}}</li>
+            <li>debit description
+                <div class="detail" style="border: 1px solid #ccc; padding: 10px;max-width: 400px;">
+                        {{loged_profile[3]}}
+                </div>
+            </li>        </ul>
+      </div>
+      <a href="/history" class="btn btn-primary">back to history</a>
+    </div>
+    <div class="card-footer">
+      <a href="/debit">New debit</a> or <a href="/payback">record payback</a>
+    </div>      
+{% endblock %}

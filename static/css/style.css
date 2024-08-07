@@ -23,6 +23,10 @@ nav{
 .navbar a:hover{
     color: #ffffffc0;
 }
+.dropdo-item{
+    background-color: none;
+    text-decoration: none;
+}
 .we{
     text-align: center;
     color: #fff;
@@ -114,7 +118,7 @@ nav{
 .reg-message,
 .message{
     text-align: center;
-    color: red;
+    color: orangered;
 }
 /* ------menu for profile customization----- */
 .user {
@@ -186,6 +190,8 @@ nav{
 }
 .basic{
     background-color: #00000027;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), /* Subtle shadow */
+                0 6px 20px rgba(0, 0, 0, 0.25);
     margin: 10px;
     min-height: 200px;
     max-width: 600px;
@@ -195,7 +201,7 @@ nav{
     border-radius: 10px;
 }
 .pay-mode{
-    background-color: #00000054;
+    background-color: #00000033;
     margin: 10px;
     min-height: 200px;
     min-width: 300px;
@@ -270,15 +276,24 @@ nav{
 
 }
 
+.col{
+    margin-right: 41px;
+}
+.col-add:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5), /* Slightly stronger shadow on hover */
+    0 10px 30px rgba(0, 0, 0, 0.4);
+}
 .col .uil-analysis{
-    background-color: rgba(255, 68, 0, 0.842);
+    background-color: #fff;
     padding: 5px 10px;
     border-radius: 50%;
+    color: #000;
 }
 .uil-bill{
-    background-color: #0d6efd;
+    background-color: #CCC;
     border-radius: 50%;
     padding: 5px 10px;
+    color: #000;
 }
 .search form >* {
     display: block;
@@ -301,6 +316,11 @@ nav{
     display: block;
     margin: 10px auto;
 }
+.main-wrapper{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
 
 .uil-shield-exclamation{
     font-size: 17px;
@@ -310,9 +330,8 @@ nav{
     list-style: none;
 
 }
-.card-body ul li{
-    line-height: 30px;
-    color: orangered;
+.card-body ul li::marker{
+    color: red;
 }
 .card-body{
     display: grid;
@@ -373,3 +392,70 @@ nav{
     color: red;
     font-size: 20px;
 }
+/* settings------- */
+    .account-settings .user-profile {
+        margin: 0 0 1rem 0;
+        padding-bottom: 1rem;
+        text-align: center;
+    }
+    .account-settings .user-profile .user-avatar {
+        margin: 0 0 1rem 0;
+    }
+    .account-settings .user-profile .user-avatar img {
+        width: 90px;
+        height: 90px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        border-radius: 100px;
+    }
+    .account-settings .user-profile h5.user-name {
+        margin: 0 0 0.5rem 0;
+    }
+    .account-settings .user-profile h6.user-email {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
+    .account-settings .about {
+        margin: 1rem 0 0 0;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    .card {
+        background: black;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 0;
+        margin-bottom: 1rem;
+    }
+    .form-control {
+        border: 1px solid #596280;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        font-size: .825rem;
+        background: #1A233A;
+        color: #bcd0f7;
+    }
+    /* ------------login & rgister design ------ */
+    .signup{
+        text-transform: capitalize;
+        background: #00000033;
+        padding: 10px 25px;
+        min-height: 500px;
+        box-shadow: linear-gradient(0deg, #111b49, #182350), #0a266d10;
+        max-width: 400px;
+        text-align: center;
+    }
+    .admin-username{
+        display: flex;
+        width: fit-content;
+        gap: 10px;
+    }
+    .signup input{
+        color: #fff;
+    }
+    .signup input::placeholder {
+        color: #ccccccaf !important;
+    }

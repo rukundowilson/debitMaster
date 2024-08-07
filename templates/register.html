@@ -3,25 +3,38 @@
 {% block main %}
     <div class="register">
         <form action="/register" method="POST">
-            <input type="text" placeholder="your name" name="username"><br>
-            <input type="email" placeholder="your email" name="email"><br>
-            <input type="password" name="password" id="" placeholder="password"><br>
-            <input type="password" name="check-password" id="" placeholder="password"><br>
-            <button type="submit" class="btn btn-primary btn-lg">register</button><br>
+            <div class="signup">
+                <div class="card-header">
+                    <h4>Join shopMS community</h4> <br>
+                </div>
+                <hr>
+                
+                <p>with shopMS you can manage your debits,post sold products and track your sells.</p><br>
+                <div class="d-grid gap-2">
+                    <a href="/verify" style="text-decoration: none;"><button class="btn btn-primary" type="button">already have an account?</button></a>
+                    or
+                    <div class="admin-username">
+                        <input class="form-control"  name="username" type="text" style="color: #fff;background: none;" placeholder="your shop's name" aria-label="default input example">                    
+                        <input class="form-control"  name="username" type="text" style="color: #fff;background: none;" placeholder="shop admin user name" aria-label="default input example">                    
+                    </div>
+                    <input class="form-control"  name="email" type="text" style="color: #fff;background: none;" placeholder="shop Email" aria-label="default input example"> 
+                    <input class="form-control"  name="password" type="password" style="color: #fff;background: none;" placeholder="password" aria-label="default input example"> 
+                    <input class="form-control"  name="check-password" type="password" style="color: #fff;background: none;" placeholder="check password" aria-label="default input example"> <br>
+                    <button type="submit" class="btn btn-primary btn-lg">register</button><br>
+                    {% with messages = get_flashed_messages(with_categories=True) %}
+                        {% if messages %}
+                            <div class="reg-message">
+                                <ul>
+                                {% for category, message in messages %}
+                                    <small class="{{ category }}">* {{ message }}</small>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
         </form>
     </div>
-{% endblock %}
 
-{% block flash_register_message %}
-    {% with messages = get_flashed_messages(with_categories=True) %}
-        {% if messages %}
-            <div class="reg-message">
-                <ul>
-                {% for category, message in messages %}
-                    <small class="{{ category }}">* {{ message }}</small>
-                {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
-    {% endwith %}
 {% endblock %}
